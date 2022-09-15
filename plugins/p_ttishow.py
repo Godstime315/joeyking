@@ -38,7 +38,7 @@ async def save_group(bot, message):
             return
         buttons = [[
             InlineKeyboardButton('ℹ️ Help', url=f"https://t.me/{temp.U_NAME}?start=help"),
-            InlineKeyboardButton('📢 Updates', url='https://t.me/Lordship_Movies')
+            InlineKeyboardButton('📢 Updates', url='https://t.me/Lordship_series')
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         await message.reply_text(
@@ -98,7 +98,7 @@ async def disable_chat(bot, message):
         return await message.reply('Give Me A Valid Chat ID')
     cha_t = await db.get_chat(int(chat_))
     if not cha_t:
-        return await message.reply("Chat Not Found In DB")
+        return await message.reply("Chat Not Found In my Database")
     if cha_t['is_disabled']:
         return await message.reply(f"This chat is already disabled:\nReason-<code> {cha_t['reason']} </code>")
     await db.disable_chat(int(chat_), reason)
